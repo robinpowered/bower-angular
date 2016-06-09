@@ -1079,6 +1079,11 @@ function equals(o1, o2) {
   if (o1 === o2) return true;
   if (o1 === null || o2 === null) return false;
   if (o1 !== o1 && o2 !== o2) return true; // NaN === NaN
+  if (moment.isMoment(o1)) {
+    return o2 && o1.isSame(o2);
+  } else if (moment.isMoment(o2)) {
+    return o1 && o2.isSame(o1);
+  }
   var t1 = typeof o1, t2 = typeof o2, length, key, keySet;
   if (t1 == t2 && t1 == 'object') {
     if (isArray(o1)) {
