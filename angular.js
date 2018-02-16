@@ -1224,13 +1224,15 @@ function equals(o1, o2) {
       return o1 && o2.isSame(o1);
     }
   } catch (e) {
-    console.error(
-      'Encountered an error when comparing moment objects:',
-      o1,
-      o2,
-      e,
-      isObject(e) ? e.stack : ''
-    );
+    setTimeout(function () {
+      console.error(
+        'Encountered an error when comparing moment objects:',
+        o1,
+        o2,
+        e,
+        isObject(e) ? e.stack : ''
+      );
+    });
     throw e;
   }
   var t1 = typeof o1, t2 = typeof o2, length, key, keySet;
